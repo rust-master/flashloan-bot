@@ -1,8 +1,11 @@
-{
+{ "scripts": {
+   "mainBot:start": "forever --spinSleepTime 2000 mainBot.js"
+  },
   "dependencies": {
     "@pancakeswap/sdk": "^3.0.0",
     "axios": "^0.27.2",
     "big-number": "^2.0.0",
+    "forever": "^4.0.3",
     "http": "^0.0.1-security",
     "https": "^1.0.0",
     "request": "^2.88.2",
