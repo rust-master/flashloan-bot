@@ -1,52 +1,79 @@
 const consts = require('./constants');
 const Web3 = require('web3');
 const web3 = new Web3("https://bsc-dataseed1.binance.org");
+const nullAddress = "0x0000000000000000000000000000000000000000";
+
+async function getPrice(dex1, dex2, factory1, factory2, pair, amount) {
+  const pairGet1 = await getPair(factory1.address, pair.address1, pair.address2)
+  const pairGet2 = await getPair(factory2.address, pair.address1, pair.address2)
 
 
-async function getPrice(dex1, dex2, pair,amount) {
-  console.log(pair.symbol1);
-  console.log(pair.symbol2);
-  const coinAddress1 = pair.address1; 
-  const coinAddress2 = pair.address2; 
+  if (nullAddress == pairGet1 && nullAddress == pairGet2) {
+    console.log(`${pairGet1} no pair exists at ${factory1.lp}\n`, `${pairGet2} no pair exists at ${factory2.lp}\n`)
+  }
+  else if (nullAddress == pairGet1) {
+    console.log(`${pairGet1} no pair exists at ${factory1.lp}`);
+  }
+  else if (nullAddress == pairGet2) {
+    console.log(`${pairGet2} no pair exists at ${factory2.lp}\n`)
+  }
+  else {
+    console.log(pair.symbol1);
+    console.log(pair.symbol2);
+    const coinAddress1 = pair.address1;
+    const coinAddress2 = pair.address2;
 
-  console.log(amount)
-  
-  let coin1ToSell = web3.utils.toWei(`${amount}`, "ether");
-  let amountOutDex1;
-  let amountOutDex2;
-  
-  try {
-    let routerDex1 = await new web3.eth.Contract(
-        consts.ABI,
+    console.log(amount)
+
+    let coin1ToSell = web3.utils.toWei(`${amount}`, "ether");
+    let amountOutDex1;
+    let amountOutDex2;
+
+    try {
+      let routerDex1 = await new web3.eth.Contract(
+        consts.RouterABI,
         dex1.address
-    );
+      );
 
-    amountOutDex1 = await routerDex1.methods
-      .getAmountsOut(coin1ToSell, [coinAddress1, coinAddress2])
-      .call();
+      amountOutDex1 = await routerDex1.methods
+        .getAmountsOut(coin1ToSell, [coinAddress1, coinAddress2])
+        .call();
 
-    // amountOutDex1 = parseInt(amountOutDex1[1]);
-    amountOutDex1 =  web3.utils.fromWei(amountOutDex1[1]);
-   
+      // amountOutDex1 = parseInt(amountOutDex1[1]);
+      amountOutDex1 = web3.utils.fromWei(amountOutDex1[1]);
 
-    let routerApe = await new web3.eth.Contract(
-      consts.ABI,
-      dex2.address
-    );
-    
-    amountOutDex2 = await routerApe.methods
-      .getAmountsOut(coin1ToSell, [coinAddress1, coinAddress2])
-      .call();
-    
-    // amountOutDex2 = parseInt(amountOutDex2[1]);
-    amountOutDex2 = web3.utils.fromWei(amountOutDex2[1]);
 
-    console.log(`\n${dex1.dex} - ${amount} ${pair.symbol1} Price: `, amountOutDex1, ` ${pair.symbol2}`, `\n${dex2.dex} - ${amount} ${pair.symbol1} Price: `, amountOutDex2, ` ${pair.symbol2}\n`);
+      let routerApe = await new web3.eth.Contract(
+        consts.RouterABI,
+        dex2.address
+      );
+
+      amountOutDex2 = await routerApe.methods
+        .getAmountsOut(coin1ToSell, [coinAddress1, coinAddress2])
+        .call();
+
+      // amountOutDex2 = parseInt(amountOutDex2[1]);
+      amountOutDex2 = web3.utils.fromWei(amountOutDex2[1]);
+
+      console.log(`\n${dex1.dex} - ${amount} ${pair.symbol1} Price: `, amountOutDex1, ` ${pair.symbol2}`, `\n${dex2.dex} - ${amount} ${pair.symbol1} Price: `, amountOutDex2, ` ${pair.symbol2}\n`);
+    }
+    catch (error) {
+      console.log("error: ", error);
+    }
   }
-  catch(error) {
-    console.log("error: ", error);
-  }
+
+
 }
+
+async function getPair(factoryAddress, pairAddress1, pairAddress2) {
+  let contract = await new web3.eth.Contract(consts.FactoryABI, factoryAddress);
+
+  let pair = await contract.methods
+    .getPair(pairAddress1, pairAddress2)
+    .call();
+  return pair;
+}
+
 // getPrice(consts.routers.pancake, consts.routers.apeswap, consts.bnb_dot, 1)
 
 // getPrice(consts.routers.pancake, consts.routers.biswap, consts.bnb_dot, 1)
@@ -61,9 +88,9 @@ async function getPrice(dex1, dex2, pair,amount) {
 // getPrice(consts.routers.pancake, consts.routers.biswap, consts.bnb_atom, 1)
 
 // getPrice(consts.routers.pancake, consts.routers.apeswap, consts.bnb_avax, 1)
-// getPrice(consts.routers.pancake, consts.routers.biswap, consts.bnb_avax, 1)
+getPrice(consts.routers.pancake, consts.routers.biswap, consts.factory.pancake, consts.factory.biswap, consts.bnb_ankr, 1)
 
-getPrice(consts.routers.pancake, consts.routers.mdex, consts.bnb_usdt, 1)
+// getPrice(consts.routers.pancake, consts.routers.mdex, consts.bnb_usdt, 1)
 
 
 

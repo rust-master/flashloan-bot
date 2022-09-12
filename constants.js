@@ -1,4 +1,4 @@
-let ABI = [
+let RouterABI = [
   {
     inputs: [
       { internalType: "uint256", name: "amountIn", type: "uint256" },
@@ -8,6 +8,21 @@ let ABI = [
     outputs: [
       { internalType: "uint256[]", name: "amounts", type: "uint256[]" },
     ],
+    stateMutability: "view",
+    type: "function",
+  },
+];
+
+let FactoryABI = [
+  {
+    constant: true,
+    inputs: [
+      { internalType: "address", name: "", type: "address" },
+      { internalType: "address", name: "", type: "address" },
+    ],
+    name: "getPair",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    payable: false,
     stateMutability: "view",
     type: "function",
   },
@@ -89,7 +104,26 @@ const routers = {
     address: "0x7DAe51BD3E3376B8c7c4900E9107f12Be3AF1bA8".toLowerCase(),
     dex: "mdex"
   }
-} 
+}
+
+const factory = {
+  pancake: {
+    address: "0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73".toLowerCase(),
+    lp: "pancake"
+  },
+  apeswap: {
+    address: "0x0841BD0B734E4F5853f0dD8d7Ea041c241fb0Da6".toLowerCase(),
+    lp: "apeswap"
+  },
+  biswap: {
+    address: "0x858E3312ed3A876947EA49d572A7C42DE08af7EE".toLowerCase(),
+    lp: "biswap"
+  },
+  bakeryswap: {
+    address: "0x01bF7C66c6BD861915CdaaE475042d3c4BaE16A7".toLowerCase(),
+    lp: "bakery"
+  }
+}
 
 module.exports = {
   bnb_dot,
@@ -99,5 +133,7 @@ module.exports = {
   bnb_avax,
   bnb_usdt,
   routers,
-  ABI
+  RouterABI,
+  factory,
+  FactoryABI
 }
