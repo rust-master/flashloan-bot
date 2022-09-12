@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "@pancakeswap/sdk": "^3.0.0",
+    "axios": "^0.27.2",
+    "big-number": "^2.0.0",
+    "http": "^0.0.1-security",
+    "https": "^1.0.0",
+    "request": "^2.88.2",
+    "uniswap-price": "^1.0.4",
+    "web3": "^1.7.5",
+    "ethereumjs-common": "^1.5.2",
+    "ethereumjs-tx": "^2.1.2"
+  }
+}
