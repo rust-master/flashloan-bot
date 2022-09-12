@@ -55,6 +55,13 @@ const bnb_avax = {
   symbol2: "AVAX"
 }
 
+const bnb_usdt = {
+  address1: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+  symbol1: "BNB",
+  address2: "0x55d398326f99059fF775485246999027B3197955",
+  symbol2: "USDT"
+}
+
 // -- DEXs Router Address --
 // Pancake: 0x10ED43C718714eb63d5aA57B78B54704E256024E
 // ApeSwap: 0xcF0feBd3f17CEf5b47b0cD257aCf6025c5BFf3b7
@@ -77,6 +84,10 @@ const routers = {
   bakeryswap: {
     address: "0xCDe540d7eAFE93aC5fE6233Bee57E1270D3E330F".toLowerCase(),
     dex: "bakery"
+  },
+  mdex: {
+    address: "0x7DAe51BD3E3376B8c7c4900E9107f12Be3AF1bA8".toLowerCase(),
+    dex: "mdex"
   }
 } 
 
@@ -86,6 +97,7 @@ module.exports = {
   bnb_link,
   bnb_atom,
   bnb_avax,
+  bnb_usdt,
   routers,
   ABI
 }

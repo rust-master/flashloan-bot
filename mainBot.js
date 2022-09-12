@@ -47,7 +47,24 @@ async function getPrice(dex1, dex2, pair,amount) {
     console.log("error: ", error);
   }
 }
-getPrice(consts.routers.pancake, consts.routers.apeswap, consts.bnb_dot, 2)
+// getPrice(consts.routers.pancake, consts.routers.apeswap, consts.bnb_dot, 1)
+
+// getPrice(consts.routers.pancake, consts.routers.biswap, consts.bnb_dot, 1)
+
+// getPrice(consts.routers.pancake, consts.routers.apeswap, consts.bnb_ankr, 1)
+
+// getPrice(consts.routers.pancake, consts.routers.apeswap, consts.bnb_link, 1)
+
+// getPrice(consts.routers.pancake, consts.routers.biswap, consts.bnb_link, 1)
+
+// getPrice(consts.routers.pancake, consts.routers.apeswap, consts.bnb_atom, 1)
+// getPrice(consts.routers.pancake, consts.routers.biswap, consts.bnb_atom, 1)
+
+// getPrice(consts.routers.pancake, consts.routers.apeswap, consts.bnb_avax, 1)
+// getPrice(consts.routers.pancake, consts.routers.biswap, consts.bnb_avax, 1)
+
+getPrice(consts.routers.pancake, consts.routers.mdex, consts.bnb_usdt, 1)
+
 
 
 
