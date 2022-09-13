@@ -77,6 +77,14 @@ const bnb_usdt = {
   symbol2: "USDT"
 }
 
+// file tokens
+const dot_usdt = {
+  address1: "0x7083609fCE4d1d8Dc0C979AAb8c869Ea2C873402",
+  symbol1: "DOT",
+  address2: "0x55d398326f99059fF775485246999027B3197955",
+  symbol2: "USDT"
+}
+
 // -- DEXs Router Address --
 // Pancake: 0x10ED43C718714eb63d5aA57B78B54704E256024E
 // ApeSwap: 0xcF0feBd3f17CEf5b47b0cD257aCf6025c5BFf3b7
@@ -122,6 +130,10 @@ const factory = {
   bakeryswap: {
     address: "0x01bF7C66c6BD861915CdaaE475042d3c4BaE16A7".toLowerCase(),
     lp: "bakery"
+  },
+  mdex: {
+    address: "0x3cd1c46068daea5ebb0d3f55f6915b10648062b8".toLowerCase(),
+    lp: "mdex"
   }
 }
 
@@ -132,6 +144,7 @@ module.exports = {
   bnb_atom,
   bnb_avax,
   bnb_usdt,
+  dot_usdt,
   routers,
   RouterABI,
   factory,

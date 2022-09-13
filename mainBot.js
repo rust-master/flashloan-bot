@@ -1,3 +1,4 @@
+var cron = require("node-cron");
 const consts = require('./constants');
 const Web3 = require('web3');
 const web3 = new Web3("https://bsc-dataseed1.binance.org");
@@ -92,11 +93,19 @@ async function getPair(factoryAddress, pairAddress1, pairAddress2) {
 // getPrice(consts.routers.pancake, consts.routers.apeswap, consts.bnb_atom, 1)
 // getPrice(consts.routers.pancake, consts.routers.biswap, consts.bnb_atom, 1)
 
-getPrice(consts.routers.pancake, consts.routers.apeswap, consts.factory.pancake, consts.factory.apeswap, consts.bnb_avax, 1)
-getPrice(consts.routers.pancake, consts.routers.biswap, consts.factory.pancake, consts.factory.biswap, consts.bnb_avax, 1)
+// getPrice(consts.routers.pancake, consts.routers.apeswap, consts.factory.pancake, consts.factory.apeswap, consts.bnb_avax, 1)
+
+
+// getPrice(consts.routers.pancake, consts.routers.biswap, consts.factory.pancake, consts.factory.biswap, consts.bnb_avax, 1)
+
+
+// cron.schedule("*/0.5 * * * * *", () => {
+//   getPrice(consts.routers.pancake, consts.routers.biswap, consts.factory.pancake, consts.factory.biswap, consts.bnb_avax, 1)
+// });
 
 // getPrice(consts.routers.pancake, consts.routers.mdex, consts.bnb_usdt, 1)
 
+// getPrice(consts.routers.pancake, consts.routers.mdex, consts.factory.pancake, consts.factory.mdex, consts.dot_usdt, 1)
 
 
 
@@ -110,12 +119,14 @@ getPrice(consts.routers.pancake, consts.routers.biswap, consts.factory.pancake, 
 // ApeSwap: 0xcF0feBd3f17CEf5b47b0cD257aCf6025c5BFf3b7
 // Biswap: 0x3a6d8cA21D1CF76F653A67577FA0D27453350dD8
 // BakerySwap Router: 0xCDe540d7eAFE93aC5fE6233Bee57E1270D3E330F
+// Mdex Router: 0x7DAe51BD3E3376B8c7c4900E9107f12Be3AF1bA8
 
 // -- DEXs Factory Address --
 // PancakeFactory address: 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
 // Apeswap Factory Address: 0x0841BD0B734E4F5853f0dD8d7Ea041c241fb0Da6
 // Biswap Factory Address: 0x858E3312ed3A876947EA49d572A7C42DE08af7EE
 // BakerySwapFactory: 0x01bF7C66c6BD861915CdaaE475042d3c4BaE16A7
+// Mdex factory: 0x3cd1c46068daea5ebb0d3f55f6915b10648062b8 
 
 
 // -- Token Address --
