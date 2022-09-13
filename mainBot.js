@@ -9,13 +9,13 @@ async function getPrice(dex1, dex2, factory1, factory2, pair, amount) {
 
 
   if (nullAddress == pairGet1 && nullAddress == pairGet2) {
-    console.log(`${pairGet1} no pair exists at ${factory1.lp}\n`, `${pairGet2} no pair exists at ${factory2.lp}\n`)
+    console.log(`${pair.symbol1} - ${pair.symbol2} no pair exists at ${factory1.lp}\n`, `${pair.symbol1} -  ${pair.symbol2} no pair exists at ${factory2.lp}\n`)
   }
   else if (nullAddress == pairGet1) {
-    console.log(`${pairGet1} no pair exists at ${factory1.lp}`);
+    console.log(`${pair.symbol1} - ${pair.symbol2} no pair exists at ${factory1.lp}`);
   }
   else if (nullAddress == pairGet2) {
-    console.log(`${pairGet2} no pair exists at ${factory2.lp}\n`)
+    console.log(`${pair.symbol1} - ${pair.symbol2} no pair exists at ${factory2.lp}\n`)
   }
   else {
     console.log("Pair 1: ", pair.symbol1);
@@ -23,8 +23,8 @@ async function getPrice(dex1, dex2, factory1, factory2, pair, amount) {
     console.log("Loan Amount: ", amount);
 
     console.log("\n-----Pair Exists Liquidity Pool Addresses----")
-    console.log(`${pairGet1} exists on ${factory1.lp}`);
-    console.log(`${pairGet2} exists on ${factory2.lp}\n`);
+    console.log(`${pair.symbol1} - ${pair.symbol2} exists on ${factory1.lp} liquidity pool (${pairGet1})`);
+    console.log(`${pair.symbol1} - ${pair.symbol2} exists on ${factory2.lp} liquidity pool (${pairGet2})\n`);
 
 
     const coinAddress1 = pair.address1;
