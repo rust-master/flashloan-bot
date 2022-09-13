@@ -18,12 +18,17 @@ async function getPrice(dex1, dex2, factory1, factory2, pair, amount) {
     console.log(`${pairGet2} no pair exists at ${factory2.lp}\n`)
   }
   else {
-    console.log(pair.symbol1);
-    console.log(pair.symbol2);
+    console.log("Pair 1: ", pair.symbol1);
+    console.log("Pair 2: ", pair.symbol2);
+    console.log("Loan Amount: ", amount);
+
+    console.log("\n-----Pair Exists Liquidity Pool Addresses----")
+    console.log(`${pairGet1} exists on ${factory1.lp}`);
+    console.log(`${pairGet2} exists on ${factory2.lp}\n`);
+
+
     const coinAddress1 = pair.address1;
     const coinAddress2 = pair.address2;
-
-    console.log(amount)
 
     let coin1ToSell = web3.utils.toWei(`${amount}`, "ether");
     let amountOutDex1;
@@ -87,8 +92,8 @@ async function getPair(factoryAddress, pairAddress1, pairAddress2) {
 // getPrice(consts.routers.pancake, consts.routers.apeswap, consts.bnb_atom, 1)
 // getPrice(consts.routers.pancake, consts.routers.biswap, consts.bnb_atom, 1)
 
-// getPrice(consts.routers.pancake, consts.routers.apeswap, consts.bnb_avax, 1)
-getPrice(consts.routers.pancake, consts.routers.biswap, consts.factory.pancake, consts.factory.biswap, consts.bnb_ankr, 1)
+getPrice(consts.routers.pancake, consts.routers.apeswap, consts.factory.pancake, consts.factory.apeswap, consts.bnb_avax, 1)
+getPrice(consts.routers.pancake, consts.routers.biswap, consts.factory.pancake, consts.factory.biswap, consts.bnb_avax, 1)
 
 // getPrice(consts.routers.pancake, consts.routers.mdex, consts.bnb_usdt, 1)
 
