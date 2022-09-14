@@ -96,7 +96,7 @@ async function getPair(factoryAddress, pairAddress1, pairAddress2) {
 // getPrice(consts.routers.pancake, consts.routers.apeswap, consts.factory.pancake, consts.factory.apeswap, consts.bnb_avax, 1)
 
 
-// getPrice(consts.routers.pancake, consts.routers.biswap, consts.factory.pancake, consts.factory.biswap, consts.bnb_avax, 1)
+getPrice(consts.routers.pancake, consts.routers.biswap, consts.factory.pancake, consts.factory.biswap, consts.bnb_avax, 1)
 
 
 // cron.schedule("*/0.5 * * * * *", () => {
