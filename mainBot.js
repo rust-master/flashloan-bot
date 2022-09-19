@@ -86,9 +86,6 @@ async function getPair(factoryAddress, pairAddress1, pairAddress2) {
 }
 
 async function getPriceImpact(pair, poolAddress, lp) {
-
-  
-
   console.log(`\n----Price Impact at ${lp}----`);
   console.log(`${lp} pool address: `, poolAddress);
   let contract = await new web3.eth.Contract(consts.PoolABI, poolAddress);
